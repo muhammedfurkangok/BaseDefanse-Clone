@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerManager : MonoBehaviour
+{
+    #region Self Varibles
+
+    #region Serialized Variables
+
+    [SerializeField] internal PlayerAnimationController playerAnimationController;
+    [SerializeField] internal PlayerMeshController playerMeshController;
+    [SerializeField] internal PlayerPhysicController playerPhysicController;
+    [SerializeField] private InputManager inputManager;
+    [SerializeField] internal PlayerMovementController playerMovementController;
+    
+    [SerializeField] public Rigidbody playerRb;
+    [SerializeField] public Transform playerChildrotation;
+    
+    #endregion
+
+    #region Public Variables
+    
+     public float moveSpeed = 5f;
+
+    #endregion
+
+    #endregion
+    
+    
+}
