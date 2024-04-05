@@ -16,8 +16,6 @@ public class PlayerPhysicController : MonoBehaviour
     private void SetMovement()
     {
         playerManager.playerRb.velocity = InputManager.instance.GetMovementInput();
-        
-
     }
     
     

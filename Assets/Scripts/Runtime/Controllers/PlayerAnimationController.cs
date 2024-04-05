@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField] private PlayerManager playerManager;
+    [SerializeField] private Animator playerAnimator;
     void Update()
     {
-        
+        PlayerAnimations();
+    }
+
+    private void PlayerAnimations()
+    {
+        if(InputManager.instance.horizontal != 0 || InputManager.instance.vertical != 0)
+        {
+           playerAnimator.SetBool("isRunning", true);
+        }
+        else
+        {
+           playerAnimator.SetBool("isRunning", false);
+        }
     }
 }
