@@ -39,7 +39,7 @@ public class InputManager : MonoBehaviour
         GetInputs();
     }
 
-    private void GetInputs()
+    public void GetInputs()
     {
         horizontal = joystick.Horizontal;
         vertical = joystick.Vertical;
