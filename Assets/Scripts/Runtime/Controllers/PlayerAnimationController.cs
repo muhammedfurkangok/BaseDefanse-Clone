@@ -7,7 +7,8 @@ public class PlayerAnimationController : MonoBehaviour
 {
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private Animator playerAnimator;
-   [ShowInInspector] private PlayerStates playerStates;
+   [ShowInInspector] public PlayerStates playerStates;
+   [SerializeField] private GameObject gun;
     void Update()
     {
         
@@ -29,7 +30,7 @@ public class PlayerAnimationController : MonoBehaviour
         {
            playerAnimator.SetBool("Running",true); 
            playerAnimator.SetBool("Shoot",false);
-           //todo silah set active
+           gun.SetActive(false);
         }
         else
         {
@@ -42,6 +43,7 @@ public class PlayerAnimationController : MonoBehaviour
         {
             playerAnimator.SetBool("Running",true); 
             playerAnimator.SetBool("Shoot",true);
+            gun.SetActive(true);
         }
         else
         {

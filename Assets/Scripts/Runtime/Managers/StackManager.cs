@@ -47,7 +47,6 @@ public class StackManager : MonoBehaviour
                     _moneyListIndexCounter++;
                 }
             }
-
         }
     }
 }
