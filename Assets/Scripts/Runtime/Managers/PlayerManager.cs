@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
 
     #region Public Variables
     
-     public float moveSpeed = 5f;
+     public float moveSpeed = 300f;
 
     #endregion
 
