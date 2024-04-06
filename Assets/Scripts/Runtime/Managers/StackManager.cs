@@ -15,31 +15,39 @@ public class StackManager : MonoBehaviour
     [SerializeField] private GameObject stackPlace;
 
 
-    private void OnTriggerEnter(Collider money)
+    private void OnTriggerEnter(Collider other)
     {
-        if (money.CompareTag("Money"))
+        if (other.CompareTag("Money"))
         {
-            moneyList.Add(money.gameObject);
-            if(moneyList.Count == 1)
+            if (other.CompareTag("Money"))
             {
-                
-                _firstMoneyPosition = stackPlace.transform.position;
-                
-                _currentMoneyPosition = new Vector3(money.transform.position.x, _firstMoneyPosition.y, money.transform.position.z);
-                
-                money.gameObject.transform.position = _firstMoneyPosition;
-                _currentMoneyPosition = new Vector3(money.transform.position.x,stackPlace.transform.position.y ,money.transform.position.z);
-                money.gameObject.GetComponent<StackController>().UpdateMoneyPosition(stackPlace.transform, true);
+                moneyList.Add(other.gameObject);
+                if(moneyList.Count == 1)
+                {
+                    //TODO lerp mekaniğinin düzeltilmesi gerekiyor!!!!!!!!
+                    other.gameObject.transform.SetParent(stackPlace.transform);
+                    _firstMoneyPosition = stackPlace.transform.position.y * Vector3.up;
+        
+                    _currentMoneyPosition = new Vector3(other.transform.position.x, _firstMoneyPosition.y, other.transform.position.z);
 
+                    other.gameObject.transform.position = _firstMoneyPosition;
+                    moneyList[0].transform.rotation = transform.rotation;
+                    other.gameObject.transform.rotation = moneyList[0].transform.rotation ; // İlk elemanın rotasyonunu al
+                    _currentMoneyPosition = new Vector3(other.transform.position.x, stackPlace.transform.position.y + 0.45f , other.transform.position.z);
+                    other.gameObject.GetComponent<StackController>().UpdateMoneyPosition(stackPlace.transform, true);
+
+                }
+                else if(moneyList.Count > 1)
+                {
+                    other.gameObject.transform.SetParent(stackPlace.transform);
+                    other.gameObject.transform.position = _currentMoneyPosition;
+                    other.gameObject.transform.rotation = moneyList[moneyList.Count - 2].transform.rotation; // Önceki paranın rotasyonunu al
+                    _currentMoneyPosition = new Vector3(other.transform.position.x, _currentMoneyPosition.y + 0.45f, other.transform.position.z);
+                    other.gameObject.GetComponent<StackController>().UpdateMoneyPosition(moneyList[_moneyListIndexCounter].transform, true);
+                    _moneyListIndexCounter++;
+                }
             }
-            else if(moneyList.Count > 1)
-            {
-                
-                money.gameObject.transform.position = _currentMoneyPosition;
-                _currentMoneyPosition = new Vector3(money.transform.position.x, _currentMoneyPosition.y + 0.3f,money.transform.position.z);
-                money.gameObject.GetComponent<StackController>().UpdateMoneyPosition(moneyList[_moneyListIndexCounter].transform, true);
-                _moneyListIndexCounter++;
-            }
+
         }
     }
 }

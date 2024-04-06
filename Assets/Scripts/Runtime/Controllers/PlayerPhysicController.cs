@@ -24,6 +24,7 @@ public class PlayerPhysicController : MonoBehaviour
         if (InputManager.instance.horizontal != 0 || InputManager.instance.vertical != 0)
         {
             playerManager.playerChildrotation.rotation = Quaternion.LookRotation(InputManager.instance.GetMovementInput());
+            playerManager.playerStackrotation.rotation = Quaternion.LookRotation(InputManager.instance.GetMovementInput());
         }
     }
 }

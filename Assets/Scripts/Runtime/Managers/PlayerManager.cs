@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     
     [SerializeField] public Rigidbody playerRb;
     [SerializeField] public Transform playerChildrotation;
+    [SerializeField] public Transform playerStackrotation;
     
     #endregion
 
