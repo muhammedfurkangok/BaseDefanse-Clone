@@ -1,20 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class StackManager : MonoBehaviour
 {
-     [ShowInInspector] public List<GameObject> moneyList = new List<GameObject>();
+    
+    private List<GameObject> moneyList = new List<GameObject>();
+    private List<GameObject> ammoList = new List<GameObject>();
     private int _moneyListIndexCounter = 0;
     private Vector3 _firstMoneyPosition;
+    private Vector3 _firstAmmoPosition;
     private Vector3 _currentMoneyPosition;
+    private Vector3 _currentAmmoPosition;
 
     [SerializeField] private GameObject stackPlace;
+    [SerializeField] private GameObject ammoStackPlace;
+    [SerializeField] private GameObject AmmoPrefab;
+    [SerializeField] private Transform ammoTransform;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private float stackSpacing = 0.1f; 
     [SerializeField] private int maxMoneyCount = 20; 
+    [SerializeField] private int maxAmmoCount = 4; 
 
     public void OnTriggerEnter(Collider other)
     {
@@ -28,6 +38,46 @@ public class StackManager : MonoBehaviour
             MoneyLeaving();
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("AmmoArea") && ammoList.Count < maxAmmoCount)
+        {
+            AmmoStack();
+        }
+    }
+
+    private void AmmoStack()
+    {
+        var obj = Instantiate(AmmoPrefab, ammoTransform.position, Quaternion.identity);
+        ammoList.Add(obj);
+    
+        if (ammoList.Count == 1)
+        {
+            _firstAmmoPosition = ammoStackPlace.transform.position;
+            obj.transform.DOMove(_firstAmmoPosition, 1f)
+                .SetEase(Ease.InOutElastic).OnComplete(() => 
+                {
+                    obj.transform.SetParent(ammoStackPlace.transform);
+                    _currentAmmoPosition = _firstAmmoPosition;
+                });
+        }
+        else
+        {
+           
+            float newYPosition = _currentAmmoPosition.y + 1f;
+            print(newYPosition);
+            Vector3 targetPosition = new Vector3(_firstAmmoPosition.x, newYPosition, _firstAmmoPosition.z);
+            obj.transform.DOMove(targetPosition, 1.5f)
+                .SetEase(Ease.InOutElastic);
+            obj.transform.SetParent(ammoStackPlace.transform);
+            
+            _currentAmmoPosition = targetPosition;
+        }
+    }
+
+
+
 
     private void MoneyStack(Collider other)
     {
