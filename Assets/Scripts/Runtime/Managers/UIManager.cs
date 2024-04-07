@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
    private int moneyCount = 0;
+   [SerializeField] private TextMeshProUGUI moneyText;
    public void UpdateMoney(int money)
    {
       moneyCount += money;
-      Debug.Log("Money Count: " + moneyCount);
+      moneyText.text = moneyCount.ToString();
+     
    }
   
 }

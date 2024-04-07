@@ -11,12 +11,10 @@ public class PlayerStackManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        stackManager.moneyList.Remove(other.gameObject);
-        Debug.Log(stackManager.moneyList.Count);
         if (other.CompareTag("Player"))
         {   
             PlayerStackSignals.Instance.DoorControllerSignal?.Invoke();
-           stackManager.MoneyLeaving();
+         
         }
     }
 
