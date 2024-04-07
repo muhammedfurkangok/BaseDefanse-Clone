@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class StackManager : MonoBehaviour
 {
-    private List<GameObject> moneyList = new List<GameObject>();
+     [ShowInInspector] public List<GameObject> moneyList = new List<GameObject>();
     private int _moneyListIndexCounter = 0;
 
     private Vector3 _firstMoneyPosition;
     private Vector3 _currentMoneyPosition;
 
     [SerializeField] private GameObject stackPlace;
+    [SerializeField] private UIManager uiManager;
     [SerializeField] private float stackSpacing = 0.1f; // Para nesneleri arasındaki mesafe
     [SerializeField] private int maxMoneyCount = 20; // Maksimum para sayısı
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("MoneyBullet"))
+        {
+            MoneyLeaving();
+        }
         if (other.CompareTag("Money") && moneyList.Count < maxMoneyCount)
         {
             moneyList.Add(other.gameObject);
@@ -35,6 +41,7 @@ public class StackManager : MonoBehaviour
             }
             else if(moneyList.Count > 1)
             {
+               Debug.Log("moneyList.Count: " + moneyList.Count);
                 other.gameObject.transform.rotation = moneyList[moneyList.Count - 2].transform.rotation;
                 other.gameObject.transform.DOMoveY(_currentMoneyPosition.y + stackSpacing, 0.2f)
                     .SetEase(Ease.InOutElastic)
@@ -47,4 +54,22 @@ public class StackManager : MonoBehaviour
             }
         }
     }
+    public void MoneyLeaving()
+    {
+        var limit = moneyList.Count;
+        for (var i = limit - 1; i >= 0; i--)
+        {
+            var obj = moneyList[0];
+            moneyList.RemoveAt();
+            moneyList.TrimExcess();
+            obj.transform.DOLocalMove(
+                new Vector3(Random.Range(-0.5f, 1f), Random.Range(-0.5f, 1f), Random.Range(-0.5f, 1f)), 0.5f);
+            obj.transform.DOLocalMove(new Vector3(0, 0.1f, 0), 0.5f).SetDelay(0.2f).OnComplete(() =>
+            {
+                uiManager.UpdateMoney(10);
+                Destroy(obj);
+            });
+        }
+    }
+
 }
