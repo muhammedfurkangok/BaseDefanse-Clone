@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -29,6 +30,7 @@ public class StackManager : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
        
+     
         if (other.CompareTag("Money") && moneyList.Count < maxMoneyCount)
         {
             MoneyStack(other);
@@ -49,36 +51,19 @@ public class StackManager : MonoBehaviour
 
     private void AmmoStack()
     {
-        var obj = Instantiate(AmmoPrefab, ammoTransform.position, Quaternion.identity);
+        var obj = Instantiate(AmmoPrefab, ammoTransform.position, ammoStackPlace.transform.rotation);
         ammoList.Add(obj);
-    
-        if (ammoList.Count == 1)
-        {
-            _firstAmmoPosition = ammoStackPlace.transform.position;
-            obj.transform.DOMove(_firstAmmoPosition, 1f)
-                .SetEase(Ease.InOutElastic).OnComplete(() => 
-                {
-                    obj.transform.SetParent(ammoStackPlace.transform);
-                    _currentAmmoPosition = _firstAmmoPosition;
-                });
-        }
-        else
-        {
-           
-            float newYPosition = _currentAmmoPosition.y + 1f;
-            print(newYPosition);
-            Vector3 targetPosition = new Vector3(_firstAmmoPosition.x, newYPosition, _firstAmmoPosition.z);
-            obj.transform.DOMove(targetPosition, 1.5f)
-                .SetEase(Ease.InOutElastic);
-            obj.transform.SetParent(ammoStackPlace.transform);
-            
-            _currentAmmoPosition = targetPosition;
-        }
+        _firstAmmoPosition = ammoStackPlace.transform.position;
+        
+        float newYPosition = _firstAmmoPosition.y + ammoList.Count - 1;
+
+        obj.transform.DOMove(new Vector3(_firstAmmoPosition.x, newYPosition, _firstAmmoPosition.z), 0.01f)
+            .SetEase(Ease.InOutElastic)
+            .OnComplete(() => 
+            {
+                obj.transform.SetParent(ammoStackPlace.transform);
+            });
     }
-
-
-
-
     private void MoneyStack(Collider other)
     {
         moneyList.Add(other.gameObject);
@@ -123,6 +108,20 @@ public class StackManager : MonoBehaviour
                     uiManager.UpdateMoney(10);
                     moneyList.Clear();
                     _moneyListIndexCounter = 0;
+                });
+        }
+    }
+    private void BulletLeaving()
+    {
+        for (int i = 0; i < ammoList.Count; i++)
+        {
+            var gameObj = ammoList[i];
+            gameObj.transform.DOMove(ammoStackPlace.transform.position, 0.2f)
+                .SetEase(Ease.Linear)
+                .OnComplete(() =>
+                {
+                    Destroy(gameObj);
+                    ammoList.Clear();
                 });
         }
     }

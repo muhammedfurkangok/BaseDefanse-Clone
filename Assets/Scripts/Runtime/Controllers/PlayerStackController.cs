@@ -22,10 +22,6 @@ namespace Runtime.Controllers
         #endregion
 
         #region Private Variables
-        
-        private int moneyCount = 0;
-    
-
         #endregion
 
         #endregion
