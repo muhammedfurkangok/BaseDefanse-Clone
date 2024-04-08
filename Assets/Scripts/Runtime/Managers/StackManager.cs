@@ -21,11 +21,61 @@ public class StackManager : MonoBehaviour
     [SerializeField] private GameObject stackPlace;
     [SerializeField] private GameObject ammoStackPlace;
     [SerializeField] private GameObject AmmoPrefab;
+    [SerializeField] private GameObject turretStackPlace;
     [SerializeField] private Transform ammoTransform;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private float stackSpacing = 0.1f; 
     [SerializeField] private int maxMoneyCount = 20; 
-    [SerializeField] private int maxAmmoCount = 4; 
+    [SerializeField] private int maxAmmoCount = 4;
+    private void Update()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out var hit, 1f))
+        {
+            if (hit.collider.CompareTag("TurretStack"))
+            {
+                int cornerIndex = 0;
+                float cornerOffset = 0.5f; // Offset from the corner to place the object
+
+                // Calculate a consistent Y level for all objects
+                float yPos = hit.transform.position.y;
+
+                // Iterate through each object in the ammoList
+                for (int index = 0; index < ammoList.Count; index++)
+                {
+                    // Calculate the position for the current object at one of the four corners
+                    Vector3 cornerPosition = hit.transform.position;
+                    switch (cornerIndex)
+                    {
+                        case 0: // Top-left corner
+                            cornerPosition += new Vector3(-cornerOffset, yPos, cornerOffset);
+                            break;
+                        case 1: // Top-right corner
+                            cornerPosition += new Vector3(cornerOffset, yPos, cornerOffset);
+                            break;
+                        case 2: // Bottom-left corner
+                            cornerPosition += new Vector3(-cornerOffset, yPos, -cornerOffset);
+                            break;
+                        case 3: // Bottom-right corner
+                            cornerPosition += new Vector3(cornerOffset, yPos, -cornerOffset);
+                            break;
+                    }
+
+                    var gameObj = ammoList[index];
+                    gameObj.transform.DOMove(cornerPosition, 0.5f).SetEase(Ease.InOutElastic).OnComplete(() =>
+                    {
+                        gameObj.transform.SetParent(hit.transform);
+                        ammoList.Clear();
+                    });
+                    gameObj.transform.DORotate(Vector3.zero, 0.5f);
+
+                    // Increment corner index (cycle through the four corners)
+                    cornerIndex = (cornerIndex + 1) % 4;
+                }
+            }
+        }
+    }
+
+
 
     public void OnTriggerEnter(Collider other)
     {

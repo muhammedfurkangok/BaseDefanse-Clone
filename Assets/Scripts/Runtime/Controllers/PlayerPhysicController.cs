@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerPhysicController : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerPhysicController : MonoBehaviour
     void Update()
     {
         SetRotation();
+       
     }
 
     private void FixedUpdate()
@@ -32,4 +34,6 @@ public class PlayerPhysicController : MonoBehaviour
                 Quaternion.LookRotation(InputManager.instance.GetMovementInput());
         }
     }
+    
+    
 }

@@ -12,7 +12,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] internal PlayerMeshController playerMeshController;
     [SerializeField] internal PlayerPhysicController playerPhysicController;
     [SerializeField] internal InputManager inputManager;
-    [SerializeField] internal PlayerMovementController playerMovementController;
     
     [SerializeField] public Rigidbody playerRb;
     [SerializeField] public Transform playerChildrotation;
