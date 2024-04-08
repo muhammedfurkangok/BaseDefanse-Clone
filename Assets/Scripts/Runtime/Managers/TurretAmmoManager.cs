@@ -1,38 +1,32 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TurretAmmoManager : MonoBehaviour
 {
     [SerializeField] private GameObject ammoPlace;
+    [SerializeField] private GameObject rotationMuzzle;
     [SerializeField] private GameObject turretMuzzle;
     [SerializeField] private GameObject ammoPrefab;
-    private float bulletDelay = 0.3f; // Her mermi arasındaki bekleme süresi
+    private float bulletDelay = 0.1f; // Her mermi arasındaki bekleme süresi
 
     private void TurretShoot()
     {
-        var obj = Instantiate(ammoPrefab, turretMuzzle.transform.position, Quaternion.identity);
+        var obj = Instantiate(ammoPrefab, turretMuzzle.transform.position, rotationMuzzle.transform.rotation);
         obj.GetComponent<Rigidbody>().AddForce(turretMuzzle.transform.forward * 1000f);
         Destroy(obj, 1f);
     }
-
-    [Button]
-    private void UseAmmo()
-    {
-        StartCoroutine(ShootBullets());
-    }
-
-    private IEnumerator ShootBullets()
+    
+    public IEnumerator ShootBullets()
     {
         foreach (Transform child in ammoPlace.transform)
         {
-            for (int i = 0; i < 4; i++) // Her bir child için 4 mermi at
-            {
-                TurretShoot();
-                yield return new WaitForSeconds(bulletDelay);
-            }
-
-            Destroy(child.gameObject); // Her bir child'i yok et
+            
+            TurretShoot();
+            yield return new WaitForSeconds(bulletDelay);
+            Destroy(child.gameObject);
+             // Her bir child'i yok et
         }
 
         if (ammoPlace.transform.childCount == 0)

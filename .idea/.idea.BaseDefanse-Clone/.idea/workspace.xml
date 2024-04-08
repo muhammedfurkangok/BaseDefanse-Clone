@@ -8,12 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/Animators/PlayerAnimations.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animators/PlayerAnimations.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/PlayerMovementController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/PlayerMovementController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/PlayerPhysicController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/PlayerPhysicController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/StackManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/StackManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Wall.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/TurretAmmoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/TurretAmmoManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TurretManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TurretManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +123,7 @@
       <workItem from="1712524636310" duration="6092000" />
       <workItem from="1712566767023" duration="2366000" />
       <workItem from="1712570328906" duration="12489000" />
-      <workItem from="1712591739693" duration="2013000" />
+      <workItem from="1712591739693" duration="12158000" />
     </task>
     <servers />
   </component>
