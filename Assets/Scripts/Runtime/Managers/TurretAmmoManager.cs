@@ -1,7 +1,7 @@
-using Sirenix.OdinInspector;
+// TurretAmmoManager.cs
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TurretAmmoManager : MonoBehaviour
 {
@@ -9,29 +9,36 @@ public class TurretAmmoManager : MonoBehaviour
     [SerializeField] private GameObject rotationMuzzle;
     [SerializeField] private GameObject turretMuzzle;
     [SerializeField] private GameObject ammoPrefab;
-    private float bulletDelay = 0.1f; // Her mermi arasındaki bekleme süresi
+    private float bulletDelay = 0.4f; 
 
     private void TurretShoot()
     {
         var obj = Instantiate(ammoPrefab, turretMuzzle.transform.position, rotationMuzzle.transform.rotation);
-        obj.GetComponent<Rigidbody>().AddForce(turretMuzzle.transform.forward * 1000f);
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        rb.AddForce(turretMuzzle.transform.forward * 1000f); 
         Destroy(obj, 1f);
     }
     
-    public IEnumerator ShootBullets()
+    public async UniTask ShootBullets()
     {
-        foreach (Transform child in ammoPlace.transform)
-        {
-            
-            TurretShoot();
-            yield return new WaitForSeconds(bulletDelay);
-            Destroy(child.gameObject);
-             // Her bir child'i yok et
-        }
-
         if (ammoPlace.transform.childCount == 0)
         {
             Debug.Log("No Ammo");
+        }
+        else
+        {
+            int childCount = ammoPlace.transform.childCount; 
+            for (int i = 0; i < childCount; i++)
+            {
+                GameObject childObject = ammoPlace.transform.GetChild(i).gameObject;
+                
+                for (int j = 0; j < 4; j++) 
+                {
+                    TurretShoot();
+                    await UniTask.Delay(200);
+                }
+                Destroy(childObject);
+            }
         }
     }
 }

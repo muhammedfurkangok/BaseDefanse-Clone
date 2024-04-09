@@ -1,3 +1,4 @@
+// TurretManager.cs
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -15,18 +16,14 @@ public class TurretManager : MonoBehaviour
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private GameObject playerMesh;
     [SerializeField] private TurretAmmoManager turretAmmoManager;
+    [SerializeField] private float bulletDelay = 0.4f; // Her mermi arası bekleme süresi (saniye)
 
-    private void OnTriggerStay(Collider other)
+    private async void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            {
-                TurretController();
-                
-                SetTurretCamera();
-               
-                StartCoroutine(turretAmmoManager.ShootBullets());
-            }
+            TurretController();
+            await bulletShoot();
         }
     }
 
@@ -35,9 +32,10 @@ public class TurretManager : MonoBehaviour
         MainCamera.Priority = 0;
         TurretCamera.Priority = 1;
     }
+
     private void SetPlayerCamera()
     {
-        TurretCamera.Priority = 0;
+        TurretCamera.Priority = -1;
         MainCamera.Priority = 1;
     }
 
@@ -51,19 +49,17 @@ public class TurretManager : MonoBehaviour
         playerManager.playerRb.velocity = Vector3.zero;
         float horizontal = floatingJoystick.Horizontal;
         float vertical = floatingJoystick.Vertical;
-        float currentRotationZ = minigunTurret.transform.eulerAngles.z;
+        SetTurretCamera();
         //todo turret'a sınır konmadı valla
         minigunTurret.transform.Rotate(Vector3.forward, horizontal * 100f * Time.deltaTime);
-     
-        
-        
-        if(vertical < -0.75f)
+
+        if (vertical < -0.75f)
         {
             SetPlayerCamera();
             PlayerController();
         }
-
     }
+
     private void PlayerController()
     {
         playerMesh.SetActive(true);
@@ -71,5 +67,10 @@ public class TurretManager : MonoBehaviour
         playerAnimator.SetBool("Turret", false);
         playerPhysicController.enabled = true;
         playerManager.enabled = true;
+    }
+
+    private async UniTask bulletShoot()
+    {
+        await turretAmmoManager.ShootBullets();
     }
 }

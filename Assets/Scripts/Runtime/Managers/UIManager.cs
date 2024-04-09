@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-   private int moneyCount = 0;
+   internal int moneyCount = 0;
    [SerializeField] private TextMeshProUGUI moneyText;
    public void UpdateMoney(int money)
    {
@@ -14,4 +14,13 @@ public class UIManager : MonoBehaviour
      
    }
   
+   public void PayMoney(int money)
+   {
+      if (moneyCount > 0)
+      {
+         
+      moneyCount -= money;
+      moneyText.text = moneyCount.ToString();
+      }
+   }
 }
