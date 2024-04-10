@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public Rigidbody playerRb;
     [SerializeField] public Transform playerChildrotation;
     [SerializeField] public Transform playerStackrotation;
+      
     
     #endregion
 
@@ -26,6 +27,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #endregion
+  
     
     
     

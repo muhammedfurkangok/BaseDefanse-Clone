@@ -5,14 +5,28 @@ TagManager:
   serializedVersion: 2
   tags:
   - Money
+  - TurretPhysics
+  - BuildArea
+  - Turret
+  - TurretStack
+  - BulletBox
+  - BaseOutTrigger
+  - InBaseTrigger
+  - MineArea
+  - Mine
+  - MoneyBullet
+  - AmmoArea
+  - MineWareHouse
+  - PistolBullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - WhatIsPlayer
   - Water
   - UI
-  - 
+  - Walkable
   - 
   - 
   - 
