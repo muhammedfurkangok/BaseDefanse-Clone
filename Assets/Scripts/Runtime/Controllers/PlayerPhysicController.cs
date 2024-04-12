@@ -26,13 +26,13 @@ public class PlayerPhysicController : MonoBehaviour
 
     private void SetRotation()
     {
-        if (InputManager.instance.horizontal != 0 || InputManager.instance.vertical != 0)
-        {
-            playerManager.playerChildrotation.rotation =
-                Quaternion.LookRotation(InputManager.instance.GetMovementInput());
-            playerManager.playerStackrotation.rotation =
-                Quaternion.LookRotation(InputManager.instance.GetMovementInput());
-        }
+        // if (InputManager.instance.horizontal != 0 || InputManager.instance.vertical != 0)
+        // {
+        //     playerManager.playerChildrotation.rotation =
+        //         Quaternion.LookRotation(InputManager.instance.GetMovementInput());
+        //     playerManager.playerStackrotation.rotation =
+        //         Quaternion.LookRotation(InputManager.instance.GetMovementInput());
+        // }
     }
     
     

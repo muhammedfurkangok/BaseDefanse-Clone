@@ -1,10 +1,14 @@
 // TurretManager.cs
+
+using System;
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class TurretManager : MonoBehaviour
 {
+ 
+
     [SerializeField] private CinemachineVirtualCamera MainCamera;
     [SerializeField] private CinemachineVirtualCamera TurretCamera;
     [SerializeField] private GameObject minigunTurret;
@@ -16,14 +20,33 @@ public class TurretManager : MonoBehaviour
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private GameObject playerMesh;
     [SerializeField] private TurretAmmoManager turretAmmoManager;
+    
+    public bool isTurretExit = false;
    
 
-    private async void OnTriggerStay(Collider other)
+    private async void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            await turretAmmoManager.ShootBullets();
+            
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             TurretController();
-            await bulletShoot();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isTurretExit = true;
+           
         }
     }
 
@@ -59,7 +82,6 @@ public class TurretManager : MonoBehaviour
             PlayerController();
         }
     }
-
     private void PlayerController()
     {
         playerMesh.SetActive(true);
@@ -67,10 +89,5 @@ public class TurretManager : MonoBehaviour
         playerAnimator.SetBool("Turret", false);
         playerPhysicController.enabled = true;
         playerManager.enabled = true;
-    }
-
-    private async UniTask bulletShoot()
-    {
-        await turretAmmoManager.ShootBullets();
     }
 }

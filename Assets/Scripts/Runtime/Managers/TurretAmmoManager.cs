@@ -9,7 +9,8 @@ public class TurretAmmoManager : MonoBehaviour
     [SerializeField] private GameObject rotationMuzzle;
     [SerializeField] private GameObject turretMuzzle;
     [SerializeField] private GameObject ammoPrefab;
-    private float bulletDelay = 0.4f; 
+    [SerializeField] private TurretManager turretManager;
+    [SerializeField] private float bulletDelay = 0.1f; 
 
     private void TurretShoot()
     {
@@ -35,7 +36,13 @@ public class TurretAmmoManager : MonoBehaviour
                 for (int j = 0; j < 4; j++) 
                 {
                     TurretShoot();
-                    await UniTask.Delay(200);
+                    await UniTask.WaitForSeconds(bulletDelay);
+                    if(turretManager.isTurretExit)
+                    {
+                        turretManager.isTurretExit = false;
+                        return;
+                        
+                    }
                 }
                 Destroy(childObject);
             }
