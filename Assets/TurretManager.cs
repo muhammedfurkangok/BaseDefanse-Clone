@@ -16,7 +16,7 @@ public class TurretManager : MonoBehaviour
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private GameObject playerMesh;
     [SerializeField] private TurretAmmoManager turretAmmoManager;
-    [SerializeField] private float bulletDelay = 0.4f; // Her mermi arası bekleme süresi (saniye)
+   
 
     private async void OnTriggerStay(Collider other)
     {
@@ -30,13 +30,13 @@ public class TurretManager : MonoBehaviour
     private void SetTurretCamera()
     {
         MainCamera.Priority = 0;
-        TurretCamera.Priority = 1;
+        TurretCamera.Priority = 5;
     }
 
     private void SetPlayerCamera()
     {
         TurretCamera.Priority = -1;
-        MainCamera.Priority = 1;
+        MainCamera.Priority = 10;
     }
 
     private void TurretController()

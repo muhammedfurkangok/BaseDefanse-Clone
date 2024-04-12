@@ -23,7 +23,7 @@ public class TurretAmmoManager : MonoBehaviour
     {
         if (ammoPlace.transform.childCount == 0)
         {
-            Debug.Log("No Ammo");
+           return;
         }
         else
         {

@@ -14,12 +14,9 @@ public class WeaponShopUIController : MonoBehaviour
             weaponShopUI.SetActive(true);
         }
     }
-    
-    private void OnTriggerExit(Collider other)
+
+    public void ButtonExit()
     {
-        if (other.CompareTag("Player"))
-        {
-            weaponShopUI.SetActive(false);
-        }
+        weaponShopUI.SetActive(false);
     }
 }

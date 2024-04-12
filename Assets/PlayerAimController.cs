@@ -22,7 +22,6 @@ public class PlayerAimController : MonoBehaviour
         {
             if (collider.CompareTag("Enemy"))
             {
-                Debug.Log("sa");
                 currentEnemy = collider.gameObject;
 
                 Vector3 direction = currentEnemy.transform.position - transform.position;
