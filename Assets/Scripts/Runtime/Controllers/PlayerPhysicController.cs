@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerPhysicController : MonoBehaviour
 {
     [SerializeField] private PlayerManager playerManager;
+    [SerializeField] private PlayerAnimationController playerAnimationController;
     
 
     void Update()
@@ -26,13 +27,16 @@ public class PlayerPhysicController : MonoBehaviour
 
     private void SetRotation()
     {
-        // if (InputManager.instance.horizontal != 0 || InputManager.instance.vertical != 0)
-        // {
-        //     playerManager.playerChildrotation.rotation =
-        //         Quaternion.LookRotation(InputManager.instance.GetMovementInput());
-        //     playerManager.playerStackrotation.rotation =
-        //         Quaternion.LookRotation(InputManager.instance.GetMovementInput());
-        // }
+        if (playerAnimationController.playerStates == PlayerStates.Idle)
+        {
+            if (InputManager.instance.horizontal != 0 || InputManager.instance.vertical != 0)
+            {
+                playerManager.playerChildrotation.rotation =
+                    Quaternion.LookRotation(InputManager.instance.GetMovementInput());
+                playerManager.playerStackrotation.rotation =
+                    Quaternion.LookRotation(InputManager.instance.GetMovementInput());
+            }
+        }
     }
     
     
