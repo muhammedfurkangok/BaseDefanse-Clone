@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Runtime.Enums;
 using Runtime.Signals;
+using TMPro;
 using UnityEngine;
 
 namespace Runtime.Controllers
@@ -12,6 +13,8 @@ namespace Runtime.Controllers
 
         #region Serialized Variables
         [SerializeField] private HostageStates hostageStates;
+        [SerializeField] private TextMeshPro minerText;
+        [SerializeField] private TextMeshPro soliderText;
         
         #endregion
 
@@ -20,6 +23,12 @@ namespace Runtime.Controllers
         [NonSerialized] public List<GameObject> hostageList = new List<GameObject>();
         [NonSerialized] public List<GameObject> minerList = new List<GameObject>();
         [NonSerialized] public List<GameObject> soliderList = new List<GameObject>();
+
+        #endregion
+
+        #region Private Variables
+        private int minerCount;
+        private int soliderCount;
 
         #endregion
         
@@ -39,7 +48,8 @@ namespace Runtime.Controllers
 
         private void SoliderHostageLeave(GameObject hostage, GameObject solider)
         {
-            //text++
+            minerCount++;
+            minerText.text = minerCount.ToString()+"/5";
             if (hostageList.Contains(hostage))
             {
                 hostageList.Remove(hostage);
@@ -53,8 +63,9 @@ namespace Runtime.Controllers
         }
 
         private void MinerHostageLeave(GameObject hostage, GameObject miner)
-        {   
-            //text++
+        {
+            soliderCount++;
+            soliderText.text = soliderCount.ToString()+"/5";
             if (hostageList.Contains(hostage))
             {
                 hostageList.Remove(hostage);

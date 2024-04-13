@@ -7,8 +7,10 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-   internal int moneyCount = 10000;
+   internal int moneyCount = 0;
+   internal int gemCount = 0;
    [SerializeField] private TextMeshProUGUI moneyText;
+   [SerializeField] private TextMeshProUGUI gemText;
    [SerializeField] private GameObject _healthBar;
    [SerializeField] private PlayerAnimationController _playerAnimationController;
 
@@ -49,6 +51,12 @@ public class UIManager : MonoBehaviour
       moneyCount += money;
       moneyText.text = moneyCount.ToString();
      
+   }
+
+   public void UpdateGem(int gem)
+   {
+      gemCount += gem;
+      gemText.text = gemCount.ToString();
    }
   
    public void PayMoney(int money)
