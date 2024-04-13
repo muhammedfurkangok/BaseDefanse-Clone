@@ -5,49 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="406b553a-d84e-4cf4-a857-55fa313b6797" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/HostageController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/HostageController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Enums/HostageStates.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Enums/HostageStates.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Signals/HostageSignals.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Signals/HostageSignals.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy/Attack.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy/Attack.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy/BossThrow.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy/BossThrow.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy/DefaultAnim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy/DefaultAnim/Idle.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy/DefaultAnim/Idle.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy/Die.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy/Die.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy/SlowRun.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Enemy/NewRedEnemy/SlowRun.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Gun.mask" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/Gun.mask.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/New Avatar Mask.mask" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/New Avatar Mask.mask.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/NpcTurret.mask" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animations/NpcTurret.mask.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/Animators/HostageAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animators/HostageAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Fonts/ARCO UI Level Text SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Fonts/ARCO UI Level Text SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Icon_PictoIcon_Close01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Icon_PictoIcon_Close01.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/noads2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/noads2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FImpossible Creations/Shared Tools/Editor Tools/FEditor_Handles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FImpossible Creations/Shared Tools/Editor Tools/FEditor_Handles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HostageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HostageManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InBaseTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InBaseTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerAimController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerAimController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Models/Mine/Diamond.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Models/Mine/Diamond.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MinerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MinerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/BaseOutTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/BaseOutTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/PlayerAnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/PlayerAnimationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/PlayerStackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/PlayerStackController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Signals/PlayerStackSignals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Signals/PlayerStackSignals.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/StackManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/StackManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +35,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TurretManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/WeaponShopUIController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -174,7 +140,8 @@
       <workItem from="1712944794019" duration="1000" />
       <workItem from="1712945473568" duration="10522000" />
       <workItem from="1713001742575" duration="4695000" />
-      <workItem from="1713011131757" duration="10347000" />
+      <workItem from="1713011131757" duration="17371000" />
+      <workItem from="1713044592469" duration="2217000" />
     </task>
     <servers />
   </component>

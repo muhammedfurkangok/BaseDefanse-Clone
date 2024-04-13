@@ -34,28 +34,28 @@ public class StackManager : MonoBehaviour
             if (hit.collider.CompareTag("TurretStack"))
             {
                 int cornerIndex = 0;
-                float cornerOffset = 0.5f; // Offset from the corner to place the object
+                float cornerOffset = 0.5f;
 
-                // Calculate a consistent Y level for all objects
+                
                 float yPos = hit.transform.position.y;
 
-                // Iterate through each object in the ammoList
+               
                 for (int index = 0; index < ammoList.Count; index++)
                 {
-                    // Calculate the position for the current object at one of the four corners
+                 
                     Vector3 cornerPosition = hit.transform.position;
                     switch (cornerIndex)
                     {
-                        case 0: // Top-left corner
+                        case 0:
                             cornerPosition += new Vector3(-cornerOffset, yPos, cornerOffset);
                             break;
-                        case 1: // Top-right corner
+                        case 1: 
                             cornerPosition += new Vector3(cornerOffset, yPos, cornerOffset);
                             break;
-                        case 2: // Bottom-left corner
+                        case 2: 
                             cornerPosition += new Vector3(-cornerOffset, yPos, -cornerOffset);
                             break;
-                        case 3: // Bottom-right corner
+                        case 3: 
                             cornerPosition += new Vector3(cornerOffset, yPos, -cornerOffset);
                             break;
                     }
@@ -68,7 +68,7 @@ public class StackManager : MonoBehaviour
                     });
                     gameObj.transform.DORotate(Vector3.zero, 0.5f);
 
-                    // Increment corner index (cycle through the four corners)
+                   
                     cornerIndex = (cornerIndex + 1) % 4;
                 }
             }
