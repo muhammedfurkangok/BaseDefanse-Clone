@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Runtime.Signals;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +9,41 @@ public class UIManager : MonoBehaviour
 {
    internal int moneyCount = 10000;
    [SerializeField] private TextMeshProUGUI moneyText;
+   [SerializeField] private GameObject _healthBar;
+   [SerializeField] private PlayerAnimationController _playerAnimationController;
+
+   private void Start()
+   {
+      SubscribeEvents();
+   }
+
+   private void SubscribeEvents()
+   {
+      PlayerStackSignals.Instance.OutBase += OutBase;
+      PlayerStackSignals.Instance.InsideBase += InsideBase;
+   }
+
+   private void InsideBase()
+   {
+      _healthBar.SetActive(false);
+   }
+
+   private void OutBase()
+   {
+      _healthBar.SetActive(true);
+   }
+
+   private void UnSubscribeEvents()
+   {
+      PlayerStackSignals.Instance.OutBase -= OutBase;
+      PlayerStackSignals.Instance.InsideBase -= InsideBase;
+   }
+
+   private void OnDisable()
+   {
+      UnSubscribeEvents();
+   }
+
    public void UpdateMoney(int money)
    {
       moneyCount += money;

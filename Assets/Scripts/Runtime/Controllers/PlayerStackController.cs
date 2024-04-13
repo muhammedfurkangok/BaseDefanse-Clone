@@ -29,7 +29,7 @@ namespace Runtime.Controllers
         private void Start()
         {
       
-            PlayerStackSignals.Instance.BulletStackLeaveSignal += BulletStackLeave;
+            PlayerStackSignals.Instance.OutBase += BulletStackLeave;
             PlayerStackSignals.Instance.DoorControllerSignal += DoorController;
         }
 
@@ -55,7 +55,7 @@ namespace Runtime.Controllers
         private void OnDisable()
         {
             
-            PlayerStackSignals.Instance.BulletStackLeaveSignal -= BulletStackLeave;
+            PlayerStackSignals.Instance.OutBase -= BulletStackLeave;
             PlayerStackSignals.Instance.DoorControllerSignal -= DoorController;
         }
     }

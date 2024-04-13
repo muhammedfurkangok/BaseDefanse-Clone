@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Runtime.Signals;
 using UnityEngine;
 
 public class BaseOutTrigger : MonoBehaviour
@@ -19,6 +20,7 @@ public class BaseOutTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerAnimationController.playerStates = PlayerStates.Fight;
+            PlayerStackSignals.Instance.OutBase.Invoke();
         }
     }
 }

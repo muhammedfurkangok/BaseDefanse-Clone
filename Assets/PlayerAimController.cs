@@ -7,6 +7,7 @@ public class PlayerAimController : MonoBehaviour
     #region Serialized Variables
     [SerializeField] private float sightRange = 5f;
     [SerializeField] private float rotationSpeed = 20f;
+    [SerializeField] private GameObject childRotation;
     
     #endregion
     #region private Variables
@@ -24,15 +25,15 @@ public class PlayerAimController : MonoBehaviour
             {
                 currentEnemy = collider.gameObject;
 
-                Vector3 direction = currentEnemy.transform.position - transform.position;
+                Vector3 direction = currentEnemy.transform.position - childRotation.transform.position;
                 Quaternion rotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+                childRotation.transform.rotation = Quaternion.Lerp(childRotation.transform.rotation, rotation, Time.deltaTime * rotationSpeed);
             }
         }
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.DrawWireSphere(childRotation.transform.position, sightRange);
     }
 }

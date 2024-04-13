@@ -25,8 +25,8 @@ namespace Runtime.Signals
         #endregion
 
         public UnityAction MoneyLeaveSignal = delegate { };
-        public UnityAction BulletStackSignal = delegate { };
-        public UnityAction BulletStackLeaveSignal = delegate { };
+        public UnityAction InsideBase = delegate { };
+        public UnityAction OutBase = delegate { };
         public UnityAction DoorControllerSignal = delegate { };
     }
 }

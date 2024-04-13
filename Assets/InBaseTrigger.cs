@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Runtime.Signals;
 using UnityEngine;
 
 public class InBaseTrigger : MonoBehaviour
@@ -19,6 +20,7 @@ public class InBaseTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerAnimationController.playerStates = PlayerStates.Idle;
+            PlayerStackSignals.Instance.InsideBase.Invoke();
         }
     }
 }
