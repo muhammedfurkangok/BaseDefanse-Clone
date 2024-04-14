@@ -24,24 +24,15 @@ public class HostageManager : MonoBehaviour
     private bool _isHostage = true;
 
     #endregion
-
-    #region Public Variables
     
- 
-
-    #endregion
-
     #endregion
 
     private void Update()
     {
         if (!_isHostage)
         {
-            _hostageNavMeshAgent.SetDestination(_player.position);
-            if(_hostageNavMeshAgent.remainingDistance <= .5f)
-            {
-                _hostageAnimator.SetBool("Running", false);
-            }
+            _hostageNavMeshAgent.SetDestination(_player.position);  
+           
         }
     }
 
@@ -52,6 +43,7 @@ public class HostageManager : MonoBehaviour
         {
             if(other.CompareTag("Player"))
             {
+                Debug.Log("Hostage is saved");
                 HostageSignals.Instance.HostageAdd.Invoke(gameObject);
            
                 _isHostage = false;

@@ -48,8 +48,9 @@ namespace Runtime.Controllers
 
         private void SoliderHostageLeave(GameObject hostage, GameObject solider)
         {
-            minerCount++;
-            minerText.text = minerCount.ToString()+"/5";
+            soliderCount++;
+            
+            soliderText.text = soliderText.ToString()+"/5";
             if (hostageList.Contains(hostage))
             {
                 hostageList.Remove(hostage);
@@ -64,12 +65,22 @@ namespace Runtime.Controllers
 
         private void MinerHostageLeave(GameObject hostage, GameObject miner)
         {
-            soliderCount++;
-            soliderText.text = soliderCount.ToString()+"/5";
+            minerCount++;
+            minerText.text = minerCount.ToString() + "/5";
             if (hostageList.Contains(hostage))
             {
                 hostageList.Remove(hostage);
                 minerList.Add(miner);
+                MinerManager minerManagerComponent = miner.GetComponent<MinerManager>();
+                if (minerManagerComponent != null)
+                {
+                    minerManagerComponent.enabled = true;
+                }
+                HostageManager hostageManager = miner.GetComponent<HostageManager>();
+                if (hostageManager != null)
+                {
+                    hostageManager.enabled = false;
+                }
             }
             else
             {

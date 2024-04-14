@@ -8,25 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AreaBuyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/AreaBuyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AreaBuyController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/AreaBuyController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HostageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/HostageManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HostageManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/HostageManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MinerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/MinerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MinerManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/MinerManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerAimController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/PlayerAimController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerAimController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/PlayerAimController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Materials/Workers/WorkerMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Materials/Workers/WorkerMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Hostage.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Hostage.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene/NavMesh-Navmesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene/NavMesh-Navmesh.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/HostageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/HostageController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SoliderManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/SoliderManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SoliderManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/SoliderManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextAnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/TextAnimationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextAnimationController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/TextAnimationController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TurretManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/TurretManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TurretManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/TurretManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/WeaponShopUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/WeaponShopUIController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/WeaponShopUIController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controllers/WeaponShopUIController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/HostageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/HostageManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +145,8 @@
       <workItem from="1712945473568" duration="10522000" />
       <workItem from="1713001742575" duration="4695000" />
       <workItem from="1713011131757" duration="17371000" />
-      <workItem from="1713044592469" duration="5698000" />
+      <workItem from="1713044592469" duration="6316000" />
+      <workItem from="1713088074895" duration="3838000" />
     </task>
     <servers />
   </component>
