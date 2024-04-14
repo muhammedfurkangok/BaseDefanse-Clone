@@ -17,13 +17,14 @@ public class EnemyManager : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
     public float timeBetweenAttacks;
     public bool alreadyAttacked;
+    public int enemyHealth = 100;
 
     #endregion
 
     #region Serialized Variables
 
     [SerializeField] private PlayerAnimationController playerAnimationController;
-    [SerializeField] private Animator enemyAnimator;
+    [SerializeField] public Animator enemyAnimator;
     [SerializeField] private GameObject[] waypoints;
 
     #endregion
@@ -41,10 +42,18 @@ public class EnemyManager : MonoBehaviour
         player = GameObject.Find("PlayerManager").transform;
         agent = GetComponent<NavMeshAgent>();
         nextPosition = waypoints[Random.Range(0, waypoints.Length)].transform.position; // Assigning nextPosition here
+        print(enemyHealth);
+        if(enemyHealth <= 0)
+        {
+            
+            enemyAnimator.SetTrigger("Die");
+            Destroy(gameObject, 2f);
+        }
     }
 
     private void Update()
-    {
+    { 
+       
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         if (playerAnimationController.playerStates == PlayerStates.Fight)
@@ -55,6 +64,8 @@ public class EnemyManager : MonoBehaviour
         }
         if (!playerInSightRange && !playerInAttackRange) Patroling();
     }
+
+
 
     private   void AttackPlayer()
     {
