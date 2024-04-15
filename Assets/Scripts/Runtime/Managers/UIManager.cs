@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-   internal int moneyCount = 0;
-   internal int gemCount = 0;
+   [SerializeField] internal int moneyCount = 0;
+   [SerializeField] internal int gemCount = 0;
    [SerializeField] private TextMeshProUGUI moneyText;
    [SerializeField] private TextMeshProUGUI gemText;
    [SerializeField] private GameObject _healthBar;
@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 
    private void Start()
    {
+      print(moneyCount);
       SubscribeEvents();
    }
 
