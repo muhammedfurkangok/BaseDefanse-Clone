@@ -67,14 +67,15 @@ public class EnemyManager : MonoBehaviour
 
     private   void AttackPlayer()
     {
-        enemyAnimator.SetTrigger("Attack");
+        enemyAnimator.SetBool("Attack",true);
     }
 
 
     private void ChasePlayer()
     {
+        enemyAnimator.SetBool("Attack",false);
         agent.SetDestination(player.position);
-        enemyAnimator.SetTrigger("Walk");
+     
     }
 
     private void Patroling()
@@ -82,7 +83,7 @@ public class EnemyManager : MonoBehaviour
         agent.SetDestination(nextPosition);
         if (!agent.pathPending  && agent.remainingDistance < 6f)
         {
-            enemyAnimator.SetTrigger("Attack");
+            enemyAnimator.SetBool("Attack",true);
         }
     }
 
@@ -99,10 +100,15 @@ public class EnemyManager : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             enemyHealth -= 50;
-            Destroy(other.gameObject);
+         
             if (enemyHealth <= 0)
             {
-                enemyAnimator.SetTrigger("Die");
+                //todo:particle
+                //todo:enemycount--
+                //todo:money++
+                agent.isStopped = true;
+                enemyAnimator.SetBool("Attack",false);
+                enemyAnimator.SetBool("Die",true);
                 Destroy(gameObject,2f);
             }
         }
@@ -110,6 +116,8 @@ public class EnemyManager : MonoBehaviour
         {
             enemyHealth -= 100;
             //todo:particle
+            agent.isStopped = true;
+            enemyAnimator.SetBool("Attack",false);
             enemyAnimator.SetTrigger("Die");
             Destroy(gameObject,2f);
         }
