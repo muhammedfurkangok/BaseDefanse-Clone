@@ -11,20 +11,22 @@ public class PlayerAimController : MonoBehaviour
     
     #endregion
     #region private Variables
-    
-    private GameObject currentEnemy; 
+    private LayerMask WhatIsEnemy;
+
+    public GameObject currentEnemy;
+
     
     #endregion
     #endregion
     void Update()
     {
+        
         Collider[] colliders = Physics.OverlapSphere(transform.position, sightRange);
         foreach (Collider collider in colliders)
         {
             if (collider.CompareTag("Enemy"))
             {
                 currentEnemy = collider.gameObject;
-
                 Vector3 direction = currentEnemy.transform.position - childRotation.transform.position;
                 Quaternion rotation = Quaternion.LookRotation(direction);
                 childRotation.transform.rotation = Quaternion.Lerp(childRotation.transform.rotation, rotation, Time.deltaTime * rotationSpeed);

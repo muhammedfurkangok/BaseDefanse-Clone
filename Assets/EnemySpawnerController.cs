@@ -26,7 +26,6 @@ public class EnemySpawnerController : MonoBehaviour
             {
                 InstantiateEnemy();
                 enemyController.enemyCount++;
-                print(enemyController.enemyCount);
             }
         }
     }

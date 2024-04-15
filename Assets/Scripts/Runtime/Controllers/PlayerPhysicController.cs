@@ -6,6 +6,7 @@ public class PlayerPhysicController : MonoBehaviour
 {
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private PlayerAnimationController playerAnimationController;
+    [SerializeField] private PlayerAimController playerAimController;
     
 
     void Update()
@@ -27,17 +28,28 @@ public class PlayerPhysicController : MonoBehaviour
 
     private void SetRotation()
     {
-        if (playerAnimationController.playerStates == PlayerStates.Idle)
+        if (playerAnimationController.playerStates == PlayerStates.Fight)
         {
-            if (InputManager.instance.horizontal != 0 || InputManager.instance.vertical != 0)
+            if (playerAimController.currentEnemy != null)
             {
-                playerManager.playerChildrotation.rotation =
-                    Quaternion.LookRotation(InputManager.instance.GetMovementInput());
-                playerManager.playerStackrotation.rotation =
-                    Quaternion.LookRotation(InputManager.instance.GetMovementInput());
+                Vector3 direction = playerAimController.currentEnemy.transform.position - playerManager.playerChildrotation.position;
+                playerManager.playerChildrotation.rotation = Quaternion.LookRotation(direction);
+                playerManager.playerStackrotation.rotation = Quaternion.LookRotation(direction);
+            }
+            else if (InputManager.instance.horizontal != 0 || InputManager.instance.vertical != 0)
+            {
+                Vector3 movementInput = InputManager.instance.GetMovementInput();
+                playerManager.playerChildrotation.rotation = Quaternion.LookRotation(movementInput);
+                playerManager.playerStackrotation.rotation = Quaternion.LookRotation(movementInput);
             }
         }
+        else if (InputManager.instance.horizontal != 0 || InputManager.instance.vertical != 0)
+        {
+            Vector3 movementInput = InputManager.instance.GetMovementInput();
+            playerManager.playerChildrotation.rotation = Quaternion.LookRotation(movementInput);
+            playerManager.playerStackrotation.rotation = Quaternion.LookRotation(movementInput);
+        }
     }
-    
+
     
 }

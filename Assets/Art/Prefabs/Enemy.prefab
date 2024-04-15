@@ -1176,7 +1176,6 @@ MonoBehaviour:
   alreadyAttacked: 0
   enemyHealth: 100
   playerAnimationController: {fileID: 0}
-  enemyController: {fileID: 0}
   enemyAnimator: {fileID: 32940021397345288}
   waypoints: []
 --- !u!136 &5113211977998306371
@@ -1198,10 +1197,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.51
-  m_Height: 1
+  m_Radius: 0.3
+  m_Height: 2.8832834
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.65, z: 0.03}
 --- !u!1 &7396091072092189819
 GameObject:
   m_ObjectHideFlags: 0

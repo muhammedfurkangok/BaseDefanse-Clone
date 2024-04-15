@@ -1,8 +1,10 @@
+using System;
 using Cysharp.Threading.Tasks;
 using Runtime.Controllers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -45,13 +47,6 @@ public class EnemyManager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         Transform randomChild = GameObject.Find("hitPlaces").transform.GetChild(Random.Range(0, GameObject.Find("hitPlaces").transform.childCount));
         nextPosition = randomChild.position;
-       
-        if(enemyHealth <= 0)
-        {
-            
-            enemyAnimator.SetTrigger("Die");
-            Destroy(gameObject, 2f);
-        }
     }
 
     private void Update()
@@ -97,5 +92,26 @@ public class EnemyManager : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            enemyHealth -= 50;
+            Destroy(other.gameObject);
+            if (enemyHealth <= 0)
+            {
+                enemyAnimator.SetTrigger("Die");
+                Destroy(gameObject,2f);
+            }
+        }
+       else if (other.CompareTag("TurretBullet"))
+        {
+            enemyHealth -= 100;
+            //todo:particle
+            enemyAnimator.SetTrigger("Die");
+            Destroy(gameObject,2f);
+        }
     }
 }

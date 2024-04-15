@@ -28,12 +28,16 @@ public class TurretManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            await turretAmmoManager.ShootBullets();
-            
+            Debug.Log("ontriggerenter");
+            if (turretAmmoManager.HasAmmo())
+            {
+                await turretAmmoManager.ShootBullets();
+            }
+            isTurretExit = false;
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private  void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -43,10 +47,10 @@ public class TurretManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("ontriggerexit");
         if (other.CompareTag("Player"))
         {
             isTurretExit = true;
-           
         }
     }
 

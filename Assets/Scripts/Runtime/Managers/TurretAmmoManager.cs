@@ -22,30 +22,25 @@ public class TurretAmmoManager : MonoBehaviour
     
     public async UniTask ShootBullets()
     {
-        if (ammoPlace.transform.childCount == 0)
+        while (ammoPlace.transform.childCount > 0)
         {
-           return;
-        }
-        else
-        {
-            int childCount = ammoPlace.transform.childCount; 
-            for (int i = 0; i < childCount; i++)
+            GameObject childObject = ammoPlace.transform.GetChild(0).gameObject;
+        
+            for (int j = 0; j < 4; j++) 
             {
-                GameObject childObject = ammoPlace.transform.GetChild(i).gameObject;
-                
-                for (int j = 0; j < 4; j++) 
+                TurretShoot();
+                await UniTask.WaitForSeconds(bulletDelay);
+                if(turretManager.isTurretExit)
                 {
-                    TurretShoot();
-                    await UniTask.WaitForSeconds(bulletDelay);
-                    if(turretManager.isTurretExit)
-                    {
-                        turretManager.isTurretExit = false;
-                        return;
-                        
-                    }
+                    turretManager.isTurretExit = false;
                 }
-                Destroy(childObject);
             }
+        
+            Destroy(childObject);
         }
+    }
+    public bool HasAmmo()
+    {
+        return ammoPlace.transform.childCount > 0;
     }
 }
