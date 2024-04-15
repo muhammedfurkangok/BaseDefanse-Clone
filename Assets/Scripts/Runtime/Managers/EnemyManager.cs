@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Runtime.Controllers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
@@ -40,9 +41,11 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("PlayerManager").transform;
+        playerAnimationController = GameObject.Find("Mesh").GetComponent<PlayerAnimationController>();
         agent = GetComponent<NavMeshAgent>();
-        nextPosition = waypoints[Random.Range(0, waypoints.Length)].transform.position; // Assigning nextPosition here
-        print(enemyHealth);
+        Transform randomChild = GameObject.Find("hitPlaces").transform.GetChild(Random.Range(0, GameObject.Find("hitPlaces").transform.childCount));
+        nextPosition = randomChild.position;
+       
         if(enemyHealth <= 0)
         {
             

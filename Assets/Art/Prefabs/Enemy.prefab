@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d8607fb6abe9c45ba2ab5ad9f11bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 6993834848322129275}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -1174,27 +1174,11 @@ MonoBehaviour:
   playerInAttackRange: 0
   timeBetweenAttacks: 0
   alreadyAttacked: 0
+  enemyHealth: 100
   playerAnimationController: {fileID: 0}
+  enemyController: {fileID: 0}
   enemyAnimator: {fileID: 32940021397345288}
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
 --- !u!136 &5113211977998306371
 CapsuleCollider:
   m_ObjectHideFlags: 0
