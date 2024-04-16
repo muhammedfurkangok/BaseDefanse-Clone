@@ -29,6 +29,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private PlayerAnimationController playerAnimationController;
     [SerializeField] public Animator enemyAnimator;
     [SerializeField] private GameObject[] waypoints;
+    [SerializeField] private ParticleSystem bloodParticle;
 
     #endregion
 
@@ -68,6 +69,7 @@ public class EnemyManager : MonoBehaviour
     private   void AttackPlayer()
     {
         enemyAnimator.SetBool("Attack",true);
+      
     }
 
 
@@ -99,11 +101,12 @@ public class EnemyManager : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
+            bloodParticle.Play();
             enemyHealth -= 50;
          
             if (enemyHealth <= 0)
             {
-                //todo:particle
+                
                 //todo:enemycount--
                 //todo:money++
                 agent.isStopped = true;
