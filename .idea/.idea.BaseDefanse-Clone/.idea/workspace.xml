@@ -8,8 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BaseDefanse-Clone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animators/EnemyAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animators/EnemyAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Managers/EnemyManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +141,8 @@
       <workItem from="1713044592469" duration="6316000" />
       <workItem from="1713088074895" duration="8021000" />
       <workItem from="1713182789088" duration="1792000" />
-      <workItem from="1713185166252" duration="9344000" />
+      <workItem from="1713185166252" duration="9731000" />
+      <workItem from="1713295815480" duration="2950000" />
     </task>
     <servers />
   </component>
