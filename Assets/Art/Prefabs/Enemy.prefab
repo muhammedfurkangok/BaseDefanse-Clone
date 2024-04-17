@@ -94,6 +94,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2493355210601725658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1087166858783460276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3817898158034792515}
+  m_Layer: 0
+  m_Name: MoneyDropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3817898158034792515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087166858783460276}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.003, y: 1.072, z: 0.01}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6835254735538584117}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1165057839423613697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1135,7 @@ Transform:
   - {fileID: 8559303325133825288}
   - {fileID: 4840543926729456659}
   - {fileID: 3405480844186808164}
+  - {fileID: 3817898158034792515}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &32940021397345288
@@ -1180,6 +1212,9 @@ MonoBehaviour:
   enemyAnimator: {fileID: 32940021397345288}
   waypoints: []
   bloodParticle: {fileID: 3405480844168427968}
+  moneyPrefab: {fileID: 1344928748427345589, guid: 2ed0fcdc7730586448b5ac69997ebdae,
+    type: 3}
+  moneyDropPoint: {fileID: 3817898158034792515}
 --- !u!136 &5113211977998306371
 CapsuleCollider:
   m_ObjectHideFlags: 0

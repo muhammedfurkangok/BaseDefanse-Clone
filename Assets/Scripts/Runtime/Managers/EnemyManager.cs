@@ -1,5 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Runtime.Controllers;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -30,6 +31,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] public Animator enemyAnimator;
     [SerializeField] private GameObject[] waypoints;
     [SerializeField] private ParticleSystem bloodParticle;
+    [SerializeField] private GameObject moneyPrefab;
+    [SerializeField] private Transform moneyDropPoint;
 
     #endregion
 
@@ -106,13 +109,13 @@ public class EnemyManager : MonoBehaviour
          
             if (enemyHealth <= 0)
             {
-                
-                //todo:enemycount--
-                //todo:money++
+                gameObject.GetComponent<Collider>().enabled = false;
+                DropMoney();
                 agent.isStopped = true;
                 enemyAnimator.SetBool("Attack",false);
                 enemyAnimator.SetBool("Die",true);
                 Destroy(gameObject,2f);
+               
             }
         }
        else if (other.CompareTag("TurretBullet"))
@@ -124,5 +127,11 @@ public class EnemyManager : MonoBehaviour
             enemyAnimator.SetTrigger("Die");
             Destroy(gameObject,2f);
         }
+    } 
+    private void DropMoney()
+    {
+        //todo flip money 
+        GameObject money = Instantiate(moneyPrefab, moneyDropPoint.position, moneyPrefab.transform.rotation);
+        money.transform.DOJump(new Vector3(money.transform.position.x, 0f, money.transform.position.z), 1f, 1, 1f);
     }
 }
