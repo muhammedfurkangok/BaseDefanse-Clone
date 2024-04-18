@@ -20,6 +20,7 @@ public class TurretManager : MonoBehaviour
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private GameObject playerMesh;
     [SerializeField] private TurretAmmoManager turretAmmoManager;
+    [SerializeField] private StackManager stackManager;
     
     public bool isTurretExit = false;
    

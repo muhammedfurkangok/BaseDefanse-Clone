@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -9,7 +10,7 @@ using UnityEngine.Serialization;
 
 public class StackManager : MonoBehaviour
 {
-    
+
     private List<GameObject> moneyList = new List<GameObject>();
     private List<GameObject> ammoList = new List<GameObject>();
     private int _moneyListIndexCounter = 0;
@@ -17,6 +18,7 @@ public class StackManager : MonoBehaviour
     private Vector3 _firstAmmoPosition;
     private Vector3 _currentMoneyPosition;
     private Vector3 _currentAmmoPosition;
+    public List<Vector3> _bulletLocation;
 
     [SerializeField] private GameObject stackPlace;
     [SerializeField] private GameObject ammoStackPlace;
@@ -24,70 +26,46 @@ public class StackManager : MonoBehaviour
     [SerializeField] private GameObject turretStackPlace;
     [SerializeField] private Transform ammoTransform;
     [SerializeField] private UIManager uiManager;
-    [SerializeField] private float stackSpacing = 0.1f; 
-    [SerializeField] private int maxMoneyCount = 20; 
-    [SerializeField] private int maxAmmoCount = 4;
-    private void Update()
+    [SerializeField] private float stackSpacing = 0.1f;
+    [SerializeField] private int maxMoneyCount = 20;
+    [SerializeField] private int maxAmmoCount = 6;
+
+    private void Awake()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out var hit, 1f))
+        _bulletLocation = new List<Vector3>
         {
-            if (hit.collider.CompareTag("TurretStack"))
-            {
-                int cornerIndex = 0;
-                float cornerOffset = 0.5f;
-
-                
-                float yPos = hit.transform.position.y;
-
-               
-                for (int index = 0; index < ammoList.Count; index++)
-                {
-                 
-                    Vector3 cornerPosition = hit.transform.position;
-                    switch (cornerIndex)
-                    {
-                        case 0:
-                            cornerPosition += new Vector3(-cornerOffset, yPos, cornerOffset);
-                            break;
-                        case 1: 
-                            cornerPosition += new Vector3(cornerOffset, yPos, cornerOffset);
-                            break;
-                        case 2: 
-                            cornerPosition += new Vector3(-cornerOffset, yPos, -cornerOffset);
-                            break;
-                        case 3: 
-                            cornerPosition += new Vector3(cornerOffset, yPos, -cornerOffset);
-                            break;
-                    }
-
-                    var gameObj = ammoList[index];
-                    gameObj.transform.DOMove(cornerPosition, 0.5f).SetEase(Ease.InOutElastic).OnComplete(() =>
-                    {
-                        gameObj.transform.SetParent(hit.transform);
-                        ammoList.Clear();
-                    });
-                    gameObj.transform.DORotate(Vector3.zero, 0.5f);
-
-                   
-                    cornerIndex = (cornerIndex + 1) % 4;
-                }
-            }
-        }
+            new Vector3(-1f, 0, 0.5f),
+            new Vector3(0f, 0, 0.5f),
+            new Vector3(0f, 0, -0.5f),
+            new Vector3(-1f, 0, -0.5f)
+        };
     }
-
-
 
     public void OnTriggerEnter(Collider other)
     {
-       
-     
+
+
         if (other.CompareTag("Money") && moneyList.Count < maxMoneyCount)
         {
             MoneyStack(other);
         }
-        if(other.CompareTag("MoneyBullet"))
+        else if (other.CompareTag("MoneyBullet"))
         {
             MoneyLeaving();
+        }
+        else if (other.CompareTag("TurretStack"))
+        {
+                for (int i = 0; i < ammoList.Count; i++)
+                {
+                    var obj = ammoList[i];
+                    obj.transform.DOMove(turretStackPlace.transform.position + _bulletLocation[i], 0.2f).SetEase(Ease.InOutElastic).onComplete += () =>
+                    {
+                        obj.transform.SetParent(turretStackPlace.transform);
+                        obj.transform.rotation = Quaternion.identity;
+                       
+                    };
+                }
+                ammoList.Clear();
         }
     }
 
@@ -104,42 +82,43 @@ public class StackManager : MonoBehaviour
         var obj = Instantiate(AmmoPrefab, ammoTransform.position, ammoStackPlace.transform.rotation);
         ammoList.Add(obj);
         _firstAmmoPosition = ammoStackPlace.transform.position;
-        
+
         float newYPosition = _firstAmmoPosition.y + ammoList.Count - 1;
 
         obj.transform.DOMove(new Vector3(_firstAmmoPosition.x, newYPosition, _firstAmmoPosition.z), 0.01f)
             .SetEase(Ease.InOutElastic)
-            .OnComplete(() => 
-            {
-                obj.transform.SetParent(ammoStackPlace.transform);
-            });
+            .OnComplete(() => { obj.transform.SetParent(ammoStackPlace.transform); });
     }
+
     private void MoneyStack(Collider other)
     {
         moneyList.Add(other.gameObject);
-        if(moneyList.Count == 1)
+        if (moneyList.Count == 1)
         {
             _firstMoneyPosition = stackPlace.transform.position;
 
             other.gameObject.transform.DOMoveY(_firstMoneyPosition.y, 0.2f)
                 .SetEase(Ease.InOutElastic)
-                .OnComplete(() => 
+                .OnComplete(() =>
                 {
                     other.gameObject.transform.rotation = stackPlace.transform.rotation;
-                    _currentMoneyPosition = new Vector3(other.transform.position.x, stackPlace.transform.position.y , other.transform.position.z);
+                    _currentMoneyPosition = new Vector3(other.transform.position.x, stackPlace.transform.position.y,
+                        other.transform.position.z);
                     other.gameObject.GetComponent<StackController>().UpdateMoneyPosition(stackPlace.transform, true);
                 });
         }
-        else if(moneyList.Count > 1)
+        else if (moneyList.Count > 1)
         {
-              
+
             other.gameObject.transform.rotation = moneyList[moneyList.Count - 2].transform.rotation;
             other.gameObject.transform.DOMoveY(_currentMoneyPosition.y + stackSpacing, 0.2f)
                 .SetEase(Ease.InOutElastic)
                 .OnComplete(() =>
                 {
-                    _currentMoneyPosition = new Vector3(other.transform.position.x, _currentMoneyPosition.y + stackSpacing, other.transform.position.z);
-                    other.gameObject.GetComponent<StackController>().UpdateMoneyPosition(moneyList[_moneyListIndexCounter].transform, true);
+                    _currentMoneyPosition = new Vector3(other.transform.position.x,
+                        _currentMoneyPosition.y + stackSpacing, other.transform.position.z);
+                    other.gameObject.GetComponent<StackController>()
+                        .UpdateMoneyPosition(moneyList[_moneyListIndexCounter].transform, true);
                     _moneyListIndexCounter++;
                 });
         }
@@ -161,18 +140,7 @@ public class StackManager : MonoBehaviour
                 });
         }
     }
-    private void BulletLeaving()
-    {
-        for (int i = 0; i < ammoList.Count; i++)
-        {
-            var gameObj = ammoList[i];
-            gameObj.transform.DOMove(ammoStackPlace.transform.position, 0.2f)
-                .SetEase(Ease.Linear)
-                .OnComplete(() =>
-                {
-                    Destroy(gameObj);
-                    ammoList.Clear();
-                });
-        }
-    }
+    
+
 }
+
