@@ -13,6 +13,7 @@ public class StackManager : MonoBehaviour
 
     private List<GameObject> moneyList = new List<GameObject>();
     private List<GameObject> ammoList = new List<GameObject>();
+    [SerializeField] private GameObject[] paths;
     private int _moneyListIndexCounter = 0;
     private Vector3 _firstMoneyPosition;
     private Vector3 _firstAmmoPosition;
@@ -101,6 +102,7 @@ public class StackManager : MonoBehaviour
                 .SetEase(Ease.InOutElastic)
                 .OnComplete(() =>
                 {
+                    other.gameObject.transform.SetParent(stackPlace.transform);
                     other.gameObject.transform.rotation = stackPlace.transform.rotation;
                     _currentMoneyPosition = new Vector3(other.transform.position.x, stackPlace.transform.position.y,
                         other.transform.position.z);
@@ -110,11 +112,15 @@ public class StackManager : MonoBehaviour
         else if (moneyList.Count > 1)
         {
 
-            other.gameObject.transform.rotation = moneyList[moneyList.Count - 2].transform.rotation;
+          
             other.gameObject.transform.DOMoveY(_currentMoneyPosition.y + stackSpacing, 0.2f)
                 .SetEase(Ease.InOutElastic)
                 .OnComplete(() =>
                 {
+                    Quaternion targetRotation = moneyList[moneyList.Count - 2].transform.rotation;
+                    Debug.Log("Target Rotation: " + targetRotation.eulerAngles);
+                    other.gameObject.transform.rotation = targetRotation;
+                    other.gameObject.transform.SetParent(stackPlace.transform);
                     _currentMoneyPosition = new Vector3(other.transform.position.x,
                         _currentMoneyPosition.y + stackSpacing, other.transform.position.z);
                     other.gameObject.GetComponent<StackController>()
@@ -126,21 +132,20 @@ public class StackManager : MonoBehaviour
 
     private void MoneyLeaving()
     {
-        for (int i = 0; i < moneyList.Count; i++)
+        foreach (var gameObj in moneyList)
         {
-            var gameObj = moneyList[i];
-            gameObj.transform.DOMove(stackPlace.transform.position, 0.2f)
+            Vector3 randomPoint = paths[UnityEngine.Random.Range(0, paths.Length)].transform.position;
+            Vector3[] pathPoints = new Vector3[] { randomPoint, stackPlace.transform.position };
+            gameObj.transform.DOPath(pathPoints, 0.2f, PathType.CatmullRom)
                 .SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {
                     Destroy(gameObj);
-                    uiManager.UpdateMoney(10);
-                    moneyList.Clear();
-                    _moneyListIndexCounter = 0;
                 });
         }
+        uiManager.UpdateMoney(10);
+        moneyList.Clear();
+        _moneyListIndexCounter = 0;
     }
-    
-
 }
 
