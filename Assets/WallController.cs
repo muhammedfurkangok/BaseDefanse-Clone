@@ -11,5 +11,9 @@ public class WallController : MonoBehaviour
 
             player.transform.position = teleportPosition.transform.position;
         }
+        if(other.CompareTag("Bullet"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

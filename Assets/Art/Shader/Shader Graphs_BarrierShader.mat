@@ -18,7 +18,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
@@ -43,11 +43,14 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Blend: 0
+    - _Blend: 2
     - _CastShadows: 1
     - _Cull: 2
     - _DotSize: 0.8
-    - _DstBlend: 10
+    - _DotsNoiseScale: 30
+    - _DstBlend: 1
+    - _GraidentNoiseScale: 10
+    - _MaskPower: 4
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5
@@ -56,7 +59,9 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _DotTilling: {r: 8, g: 8, b: 0, a: 0}
+    - _DotTilling: {r: 25, g: 16, b: 0, a: 0}
+    - _DotsColor: {r: 0.9339623, g: 0.20747103, b: 0.013216423, a: 1}
+    - _NoiseSpeed: {r: 0, g: 0.2, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2116471810917119633
 MonoBehaviour:
