@@ -27,6 +27,7 @@ public class HostageManager : MonoBehaviour
     
     #endregion
 
+    
     private void Update()
     {
         if (!_isHostage)

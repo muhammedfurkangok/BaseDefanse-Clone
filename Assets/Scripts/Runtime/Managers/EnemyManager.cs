@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour
     #region Public Variables
 
     public NavMeshAgent agent;
+    public NavMeshObstacle obstacle;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -46,6 +47,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
+        
         player = GameObject.Find("PlayerManager").transform;
         playerAnimationController = GameObject.Find("Mesh").GetComponent<PlayerAnimationController>();
         agent = GetComponent<NavMeshAgent>();

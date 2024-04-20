@@ -67,4 +67,12 @@ public class UIManager : MonoBehaviour
       moneyText.text = moneyCount.ToString();
       }
    }
+   public void PayGem(int gem)
+   {
+      if (gemCount > 0)
+      {
+         gemCount -= gem;
+         gemText.text = gemCount.ToString();
+      }
+   }
 }

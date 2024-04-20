@@ -8,8 +8,8 @@ public class MinerManager : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _minerNavMeshAgent;
     [SerializeField] private Animator _minerAnimator;
-    [SerializeField] private Transform[] _minerWayPoints;
-    [SerializeField] private Transform diamondPlace;
+    public Transform[] _minerWayPoints;
+     public Transform diamondPlace;
     [SerializeField] private GameObject gemPrefab;
     [SerializeField] private Transform gemInstantiatePosition;
     [SerializeField] private GameObject minerPickaxe;

@@ -35,7 +35,6 @@ public class WorkerManager : MonoBehaviour
 
     private void Update()
     {
-     
         if (_workerNavMeshAgent.remainingDistance <= 0.1f && ammoList.Count < maxAmmoCount)
         {
             AmmoStack();

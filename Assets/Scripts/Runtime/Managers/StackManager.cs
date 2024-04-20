@@ -118,7 +118,6 @@ public class StackManager : MonoBehaviour
                 .OnComplete(() =>
                 {
                     Quaternion targetRotation = moneyList[moneyList.Count - 2].transform.rotation;
-                    Debug.Log("Target Rotation: " + targetRotation.eulerAngles);
                     other.gameObject.transform.rotation = targetRotation;
                     other.gameObject.transform.SetParent(stackPlace.transform);
                     _currentMoneyPosition = new Vector3(other.transform.position.x,
