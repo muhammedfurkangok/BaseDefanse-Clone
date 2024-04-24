@@ -27,7 +27,11 @@ public class HostageManager : MonoBehaviour
     
     #endregion
 
-    
+    private void Start()
+    {
+        _player = GameObject.Find("PlayerManager").transform;
+    }
+
     private void Update()
     {
         if (!_isHostage)

@@ -16,6 +16,7 @@ public class MinerManager : MonoBehaviour
     [SerializeField] private GameObject minerFakePickaxe;
     
     private readonly List<GameObject> _diamondList = new List<GameObject>();
+    private List<Vector3> _diamondLocation;
     private float _directY;
     private float _directZ;
     private float _directX;
@@ -26,8 +27,8 @@ public class MinerManager : MonoBehaviour
     private float OffsetZ = 0.28f;
 
     private void Start()
-    {
-      
+    {  
+        diamondPlace = GameObject.Find("MineDiamondArea").transform;
         int randomWayPointIndex = Random.Range(0, _minerWayPoints.Length);
         Vector3 randomWayPointPosition = _minerWayPoints[randomWayPointIndex].position;
         StartCoroutine(MinerBehaviour(randomWayPointPosition));
