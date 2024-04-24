@@ -40,16 +40,22 @@ public class BossManager : MonoBehaviour
 
     private  void Tackle()
     {
-        Rigidbody playerRb = player.GetComponent<Rigidbody>();
+       //-50 health
          tackled = true;
         transform.LookAt(player.transform);
         bossAnimator.SetTrigger("Tackle");
-        playerRb.AddForce(transform.forward * 50, ForceMode.Impulse);
+        DOTween.Sequence()
+            .AppendInterval(1f) // Tackle animasyonunun süresi (2 saniye)
+            .AppendCallback(() =>
+            {
+                player.transform.DOMove(player.transform.position + transform.forward * 20, 0.5f);
+            });
        
     }
 
     private  void Attack()
     {
+        //-20 health
         transform.LookAt(player.transform);
         tackled = false;
         
