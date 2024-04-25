@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 
-    private void Awake()
+    private void Start()  
     {
         SubscribeEvents();
     }
