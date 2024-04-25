@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Runtime.Managers;
 using Runtime.Signals;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,17 +14,27 @@ public class UIManager : MonoBehaviour
    [SerializeField] private TextMeshProUGUI moneyText;
    [SerializeField] private TextMeshProUGUI gemText;
    [SerializeField] private GameObject _healthBar;
+   [SerializeField] private Image _healthSlider;
+   [SerializeField] private TextMeshProUGUI _healthText;
    [SerializeField] private PlayerAnimationController _playerAnimationController;
 
    private void Start()
    {
       SubscribeEvents();
+      onHealthChanged(PlayerHealthManager.Instance.health);
    }
 
    private void SubscribeEvents()
    {
       PlayerStackSignals.Instance.OutBase += OutBase;
       PlayerStackSignals.Instance.InsideBase += InsideBase;
+      PlayerHealthManager.Instance.OnHealthChanged += onHealthChanged;
+   }
+
+   private void onHealthChanged(int arg0)
+   {
+      _healthSlider.fillAmount = arg0 / 100f ;
+      _healthText.text = arg0.ToString() ;
    }
 
    private void InsideBase()
@@ -63,8 +75,8 @@ public class UIManager : MonoBehaviour
    {
       if (moneyCount > 0)
       {
-      moneyCount -= money;
-      moneyText.text = moneyCount.ToString();
+         moneyCount -= money;
+         moneyText.text = moneyCount.ToString();
       }
    }
    public void PayGem(int gem)

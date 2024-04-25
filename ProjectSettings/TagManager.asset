@@ -22,6 +22,7 @@ TagManager:
   - Bullet
   - TurretBullet
   - ProggresArea
+  - EnemyHand
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,8 @@ using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Runtime.Controllers;
+using Runtime.Managers;
+using Runtime.Signals;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
@@ -34,12 +36,14 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private ParticleSystem bloodParticle;
     [SerializeField] private GameObject moneyPrefab;
     [SerializeField] private Transform moneyDropPoint;
+    [SerializeField] private GameObject enemyHand;
 
     #endregion
 
     #region Private Variables
 
     private Vector3 nextPosition;
+    private bool hasAttacked = false;
 
     #endregion
 
@@ -47,14 +51,13 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
-        
         player = GameObject.Find("PlayerManager").transform;
         playerAnimationController = GameObject.Find("Mesh").GetComponent<PlayerAnimationController>();
         agent = GetComponent<NavMeshAgent>();
         Transform randomChild = GameObject.Find("hitPlaces").transform.GetChild(Random.Range(0, GameObject.Find("hitPlaces").transform.childCount));
         nextPosition = randomChild.position;
     }
-
+    
     private void Update()
     { 
        
@@ -71,17 +74,19 @@ public class EnemyManager : MonoBehaviour
 
 
 
-    private   void AttackPlayer()
+    private void AttackPlayer()
     {
         enemyAnimator.SetBool("Attack",true);
-      
     }
+    
 
 
     private void ChasePlayer()
     {
+        
         enemyAnimator.SetBool("Attack",false);
         agent.SetDestination(player.position);
+        hasAttacked = false;
      
     }
 
