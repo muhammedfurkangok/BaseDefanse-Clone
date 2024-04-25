@@ -40,9 +40,8 @@ namespace Runtime.Managers
             
             OnHealthChanged?.Invoke(health);
             
-            if (health <= 0)
+            if (health <= 0 )
             {
-                Debug.Log("Player Died");
                 OnPlayerDied.Invoke();
             }
         }

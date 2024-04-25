@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Runtime.Managers;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -21,6 +22,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public Transform playerStackrotation;
       
     [SerializeField] private Animator playerAnimator;
+    [SerializeField] private GameObject child;
     
     #endregion
 
@@ -44,9 +46,15 @@ public class PlayerManager : MonoBehaviour
 
     private async void OnPlayerDied()
     {
+        enabled = false;
         playerAnimator.SetTrigger("Die");
-        await UniTask.WaitForSeconds(4);
-        transform.position = new Vector3(0, 0, -26);
+        await UniTask.WaitForSeconds(2);
+        enabled = true;
+        playerAnimator.SetTrigger("Idle");
+        playerAnimator.SetBool("Shoot",false);
+        PlayerHealthManager.Instance.health = 100;
+        PlayerHealthManager.Instance.TakeDamage(0);
+        transform.position = new Vector3(0.2f, 0, -26);
     }
     
     private void UnsubscribeEvents()
