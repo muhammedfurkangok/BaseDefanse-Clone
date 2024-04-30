@@ -29,8 +29,7 @@ public class MinerManager : MonoBehaviour
     private void Start()
     {  
         diamondPlace = GameObject.Find("MineDiamondArea").transform;
-        int randomWayPointIndex = Random.Range(0, _minerWayPoints.Length);
-        Vector3 randomWayPointPosition = _minerWayPoints[randomWayPointIndex].position;
+        Vector3 randomWayPointPosition = GameObject.Find("MinerWayPoint").transform.GetChild(Random.Range(0, GameObject.Find("MinerWayPoint").transform.childCount)).position;
         StartCoroutine(MinerBehaviour(randomWayPointPosition));
     }
 
