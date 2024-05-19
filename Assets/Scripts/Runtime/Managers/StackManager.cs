@@ -59,9 +59,9 @@ public class StackManager : MonoBehaviour
                 for (int i = 0; i < ammoList.Count; i++)
                 {
                     var obj = ammoList[i];
-                    obj.transform.DOMove(turretStackPlace.transform.position + _bulletLocation[i], 0.2f).SetEase(Ease.InOutElastic).onComplete += () =>
+                    obj.transform.DOMove(other.transform.position + _bulletLocation[i], 0.2f).SetEase(Ease.InOutElastic).onComplete += () =>
                     {
-                        obj.transform.SetParent(turretStackPlace.transform);
+                        obj.transform.SetParent(other.transform);
                         obj.transform.rotation = Quaternion.identity;
                        
                     };

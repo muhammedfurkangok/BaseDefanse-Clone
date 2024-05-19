@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
    [SerializeField] private TextMeshProUGUI _healthText;
    [SerializeField] private PlayerAnimationController _playerAnimationController;
 
+   private bool canUpgradeHealth;
    private void Start()
    {
       SubscribeEvents();
@@ -87,4 +88,5 @@ public class UIManager : MonoBehaviour
          gemText.text = gemCount.ToString();
       }
    }
+   
 }

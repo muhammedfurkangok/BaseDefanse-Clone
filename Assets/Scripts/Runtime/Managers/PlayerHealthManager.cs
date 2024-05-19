@@ -29,7 +29,7 @@ namespace Runtime.Managers
         public UnityAction<int> OnHealthChanged = delegate {  };
         public UnityAction OnPlayerDied = delegate {  };
         public int health = 100;
-        private int maxHealth = 100;
+        public int maxHealth = 100;
         [SerializeField] private UIManager uiManager;
     
         
