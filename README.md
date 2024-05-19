@@ -35,3 +35,5 @@ Pekiştirdiğim Başlıklar:
 
 -Observer Pattern
 
+![1](https://github.com/muhammedfurkangok/BaseDefanse-Clone/assets/147252706/74735832-f029-40a2-b2ea-6c5d9400c7e1)
+
