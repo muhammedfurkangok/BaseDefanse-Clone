@@ -43,5 +43,3 @@ This project helped me improve my skills in various game development principles 
 ✅ **Observer Pattern** (Decoupled Event-Driven System)  
 
 ---
-
-🚀 *Base Defense Clone was an exciting project where I refined my game development skills. Stay tuned for more projects!*  
